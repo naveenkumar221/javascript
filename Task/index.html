@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student DOM Methods Project</title>
+  <style>
+    body {
+      font-family: 'Times New Roman', Times, serif;
+      background-color: #f0f8ff;
+      text-align: center;
+      margin-top: 40px;
+    }
+    .info {
+      color: blue;
+      font-size: 18px;
+    }
+    .highlight {
+      color: green;
+    }
+    input {
+      margin: 5px;
+      padding: 8px;
+      border-radius: 5px;
+      border: 1px solid gray;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    
+  </style>
+</head>
+<body>
+
+  <h2 id="heading">🎓 Student Details Project</h2>
+  <p class="info">This project uses DOM methods like getElementById(), getElementsByClassName(), etc.</p>
+
+  <hr>
+
+  
+  <h3>Enter Student Information</h3>
+  <input type="text" name="studentName" placeholder="Enter Student Name"><br>
+  <input type="number" name="studentMarks" placeholder="Enter Marks"><br>
+  <button onclick="showDetails()">Show Details</button>
+
+  <hr>
+
+  
+  <h3>Output:</h3>
+  <div id="output"></div>
+
+
+
+  <script>
+    // Using document.write()
+    document.write("<p style='color: purple;'>Welcome to Student Information System!</p>");
+
+    // Function to show details
+    function showDetails() {
+      // getElementsByName()
+      const name = document.getElementsByName("studentName")[0].value;
+      const marks = document.getElementsByName("studentMarks")[0].value;
+
+      // getElementById()
+      const outputDiv = document.getElementById("output");
+      outputDiv.innerHTML = `<b>Student Name:</b> ${name}<br><b>Marks:</b> ${marks}`;
+
+      // getElementsByClassName()
+      const infoText = document.getElementsByClassName("info");
+      infoText[0].classList.add("highlight");
+
+      // getElementsByTagName()
+      const totalParagraphs = document.getElementsByTagName("p").length;
+
+
+      // Change heading color using getElementById()
+      document.getElementById("heading").style.color = "red";
+    }
+  </script>
+
+</body>
+</html>

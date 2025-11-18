@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Degree Marks Card</title>
+  <style>
+  
+body{
+  margin-left: 20%;
+  
+  
+}
+
+.certificate {
+width: 800px;
+border: 10px solid #b96db6;
+background-color: #fff;
+padding: 15px 30px;
+/* background-color:lightpink; */
+background-image: linear-gradient(to right,#FAEBD7,lightpink,skyblue)
+/* color: rgb(red, green, blue); */
+}
+
+.header{
+text-align: center;
+border-bottom: 2px solid #b96db6;
+padding-bottom: 5px;
+}
+
+.header h2 {
+color: #4b004b;
+margin: 0;
+font-size: 24px;
+font-weight: bold;
+}
+
+.header h3 {
+color: #006400;
+margin: 4px 0;
+font-size: 18px;
+}
+
+.header h4 {
+color: #ff6600;
+margin: 4px 0;
+font-size: 18px;
+font-weight: bold;
+}
+
+.header small {
+color: #000;
+font-size: 13px;
+}
+
+
+.top-row {
+display: flex;
+justify-content: space-between;
+align-items: flex-start;
+margin-top: 10px;
+}
+
+.qr-box, .photo {
+width: 120px;
+height: 120px;
+border: 1px solid #999;
+text-align: center;
+font-size: 12px;
+color: #555;
+display: flex;
+align-items: center;
+justify-content: center;
+background-color: #fdfdfd;
+}
+
+.qr-box img, .photo img{
+  width: 100%;
+}
+
+.logo {
+text-align:center;
+
+}
+
+.logo img {
+width: 160px;
+height: 90px;
+}
+
+.logo h4 {
+    color: #ff6600;
+    font-weight: bold;
+    font-size: 15px;
+    margin-top: 5px;
+  }
+
+ 
+.info {
+    margin-top: 10px;
+    background-color: #e3f1dd; 
+    padding: 10px 20px;
+    border: 1px solid #a5c49e;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+.info span {
+    font-weight: bold;
+    color: #000;
+  }
+
+.info p {
+    margin: 3px 0;
+  }
+
+.section-title {
+    background: #ffcc80; 
+    padding: 6px;
+    font-weight: bold;
+    text-align: left;
+    margin-top: 10px;
+    }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 0 15px 0;
+    font-size: 14px;
+    margin: 0;
+    }
+
+th, td {
+    border: 1px solid #000;
+    padding: 6px;
+    text-align: center;
+    }
+
+th {
+    background: #eeeeee;
+    }
+    
+.grade-A1 { background: #a5d6a7; }  
+.grade-A2 { background: #90caf9; }   
+.grade-B1 { background: #ffcc80; }   
+.grade-C1 { background: #ef9a9a; }   
+.gpa {
+    margin-top: 8px;
+    padding: 10px;
+    border: 1px solid #000;
+    font-size: 16px;
+    font-weight: bold;
+    background: #fce4ec;  
+    text-align: left;    
+    width: 100%;          
+    box-sizing: border-box;
+    margin: 0;
+}
+
+.footer {
+    margin-top: 20px;
+    font-size: 14px;
+}
+.signature {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+}
+
+</style>
+
+</head>
+<body>
+  <div class="certificate">
+   
+    <div class="header">
+      <h2>Board of Secondary Education</h2>
+      <h3>ANDHRA PRADESH, INDIA</h3>
+    </div>
+
+    
+    <div class="top-row">
+      <div class="qr-box"><img src="./QR_code_for_mobile_English_Wikipedia.svg.webp" alt="QR Code"></div>
+      <div class="logo">
+        <img src="./aplogo.jpeg" alt="AP Logo">
+        <h4>SECONDARY SCHOOL CERTIFICATE</h4>
+        <small>REGULAR | SS 266442</small>
+      </div>
+      <div class="photo" ><img src="./pngtree-man-avatar-image-for-profile-png-image_13001877.png" alt="User Photo "></div>
+      <!-- <img src="./pngtree-man-avatar-image-for-profile-png-image_13001877.png" alt=""> -->
+    </div>
+
+  
+    <div class="info">
+      <p>Certified that <span>KETHYREDDY NAVEEN KUMAR</span></p>
+      <p>Father Name: <span>KETHYREDDY SHANKARA RAO</span></p>
+      <p>Mother Name: <span>KETHYREDDY UMA MAHESWARI</span></p>
+      <p>Bearing Roll No: <span>1906116273</span></p>
+      <p>Belonging to <span>A.P. MODEL SCHOOL, SALUR, VZM</span></p>
+      <p>Has appeared and passed SSC Examination held in <span>MARCH 2019</span> with GPA <span>9.7</span></p>
+      <p>And <span>ENGLISH</span> as medium of instruction.</p>
+    </div>
+ 
+
+<div class="section-title">
+  The Candidate Secured the Following Grades in Curricular Area
+</div>
+
+<table>
+  <tr style="background:#a5d6a7; font-weight:bold;">
+    <td rowspan="2">Curricular Subjects</td>
+    <td colspan="2">Grade</td>
+    <td colspan="2">Overall Grade</td>
+  </tr>
+  <tr style="background:#c8e6c9; font-weight:bold;">
+    <td>Internal</td>
+    <td>External</td>
+    <td>Grade</td>
+    <td>Grade Points</td>
+  </tr>
+
+  <tr>
+    <td>First Language - English</td>
+    <td class="grade-A1">A1</td>
+    <td class="grade-A2">A2</td>
+    <td class="grade-A1">A1</td>
+    <td>10</td>
+  </tr>
+  <tr>
+    <td>Second Language - Telugu</td>
+    <td class="grade-B1">B1</td>
+    <td class="grade-A2">A2</td>
+    <td class="grade-A2">A2</td>
+    <td>9</td>
+  </tr>
+  <tr>
+    <td>Mathematics</td>
+    <td class="grade-A1">A1</td>
+    <td class="grade-A1">A1</td>
+    <td class="grade-A1">A1</td>
+    <td>10</td>
+  </tr>
+  <tr>
+    <td>Physical Science</td>
+    <td class="grade-A2">A2</td>
+    <td class="grade-A2">A2</td>
+    <td class="grade-A2">A2</td>
+    <td>9</td>
+  </tr>
+  <tr>
+    <td>Biological Science</td>
+    <td class="grade-B1">B1</td>
+    <td class="grade-B1">B1</td>
+    <td class="grade-B1">B1</td>
+    <td>8</td>
+  </tr>
+  <tr>
+    <td>Social Studies</td>
+    <td class="grade-A1">A1</td>
+    <td class="grade-A2">A2</td>
+    <td class="grade-A1">A1</td>
+    <td>10</td>
+  </tr>
+</table>
+
+
+    <p class="gpa"><strong>Grade Point Average (GPA):</strong> 8.2 / 10</p>
+
+   
+    
+    <div class="section-title">Co-Curricular Area</div>
+    <table>
+      <tr>
+        <th>Subject</th>
+        <th>Grade</th>
+        <th>Subject</th>
+        <th>Grade</th>
+      </tr>
+      <tr>
+        <td>Value Education & Life Skills</td>
+        <td>A+</td>
+        <td>Work & Computer Education</td>
+        <td>A+</td>
+      </tr>
+      <tr>
+        <td>Art & Cultural Education</td>
+        <td>A+</td>
+        <td>Health & Physical Education</td>
+        <td>A+</td>
+      </tr>
+    </table>
+
+    
+    
+    <div class="footer">
+      <p><strong>Identification Marks:</strong></p>
+      <p>1) A mole on the left hand wrist</p>
+      <p>2) A mole on the abdomen</p>
+    </div>
+
+    
+    
+    <div class="signature">
+      <p>_________________<br>Head of Department</p>
+      <p>_________________<br>Controller of Examinations</p>
+    </div>
+  </div>
+  </div>
+</body>
+</html>         

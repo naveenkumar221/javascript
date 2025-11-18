@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Styled Form Example</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f2f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    form {
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+      width: 350px;
+    }
+
+    form h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin: 10px 0 5px;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: #007BFF;
+      outline: none;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .btn-submit {
+      background: #007BFF;
+      color: white;
+      margin-bottom: 10px;
+    }
+
+    .btn-reset {
+      background: #f44336;
+      color: white;
+    }
+
+    .btn:hover {
+      opacity: 0.9;
+    }
+
+    @media (max-width: 480px) {
+    body {
+    padding: 15px;
+    height: auto; 
+    }
+
+    form {
+    width: 100%;   
+    padding: 20px; 
+    }
+
+    form h2 {
+    font-size: 20px; 
+    }
+
+    input, select, textarea {
+    font-size: 13px; 
+    }
+
+    .btn {
+    font-size: 14px;
+    padding: 10px;
+    }
+}
+  </style>
+</head>
+<body>
+
+  <form action="submit.php" method="post">
+    <h2>Registration Form</h2>
+
+    <label for="username">Username</label>
+    <input type="text" id="username" name="username" placeholder="Enter your name" required>
+
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" placeholder="Enter your email">
+
+    <label for="country">Country</label>
+    <select id="country" name="country">
+      <option value="">--Select--</option>
+      <option value="india">India</option>
+      <option value="usa">USA</option>
+      <option value="uk">UK</option>
+    </select>
+
+    <label for="message">Message</label>
+    <textarea id="message" name="message" rows="4" placeholder="Enter your message"></textarea>
+
+    <input type="submit" class="btn btn-submit" value="Submit">
+    <input type="reset" class="btn btn-reset" value="Reset">
+  </form>
+
+</body>
+</html>

@@ -1,0 +1,1 @@
+console.log("it is used by the external js ")
