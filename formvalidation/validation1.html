@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Form</title>
+
+<style>
+
+body {
+    margin: 0;
+    height: 100vh;
+    font-family: "Poppins", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px; 
+    background: linear-gradient(135deg, #ff8ea3, #ffc97a, #8cd3ff);
+    background-size: 300% 300%;
+    animation: gradientMove 10s ease infinite;
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+
+.card {
+    width: 480px;
+    padding: 30px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+}
+
+.card h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #333;
+    font-size: 28px;
+}
+
+label {
+    color: #333;
+    font-size: 15px;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    margin-top: 6px;
+    margin-bottom: 18px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: 1px solid rgba(0,0,0,0.2);
+    background: rgba(255, 255, 255, 0.6);
+    outline: none;
+    box-sizing: border-box;
+    transition: 0.3s;
+}
+
+input:focus {
+    border-color: #ff6b6b;
+    box-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
+}
+
+.error {
+    font-size: 14px;
+    color: #d60000;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    min-height: 18px;
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    font-size: 18px;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    background: linear-gradient(135deg, #ff6b6b, #ff9248);
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 20px rgba(255, 107, 107, 0.4);
+}
+
+
+
+
+
+@media (max-width: 768px) {
+    .card {
+        width: 80%;
+        padding: 25px;
+    }
+    .card h2 {
+        font-size: 24px;
+    }
+}
+
+
+@media (max-width: 480px) {
+    body {
+        padding: 20px;
+    }
+    .card {
+        width: 100%;
+        padding: 20px;
+        border-radius: 15px;
+    }
+    input {
+        padding: 12px;
+        font-size: 15px;
+    }
+    button {
+        padding: 12px;
+        font-size: 16px;
+    }
+}
+
+
+@media (max-width: 360px) {
+    .card {
+        padding: 15px;
+    }
+    .card h2 {
+        font-size: 20px;
+    }
+    input, button {
+        font-size: 14px;
+    }
+}
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>Signup</h2>
+
+    <form onsubmit="return validateForm()">
+
+        <label>Name:</label>
+        <input type="text" id="name">
+        <div id="nameError" class="error"></div>
+
+        <label>Email:</label>
+        <input type="email" id="email">
+        <div id="emailError" class="error"></div>
+
+        <label>Password:</label>
+        <input type="password" id="password">
+        <div id="passError" class="error"></div>
+
+        <label>Confirm Password:</label>
+        <input type="password" id="confirm">
+        <div id="confirmError" class="error"></div>
+
+        <label>Phone:</label>
+        <input type="text" id="phone">
+        <div id="phoneError" class="error"></div>
+
+        <button type="submit">Signup</button>
+    </form>
+
+    <div id="successBox" 
+     style="display:none;
+     margin-top:15px;
+     padding:12px;
+     background:#d4ffd6;
+     color:#065f1f;
+     border-left:5px solid #0ea400;
+     border-radius:8px;
+     font-size:16px;">
+</div>
+</div>
+
+<script>
+    function validateForm() {
+    let name = document.getElementById("name").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let password = document.getElementById("password").value.trim();
+    let confirm = document.getElementById("confirm").value.trim();
+    let phone = document.getElementById("phone").value.trim();
+
+    document.getElementById("nameError").innerHTML = "";
+    document.getElementById("emailError").innerHTML = "";
+    document.getElementById("passError").innerHTML = "";
+    document.getElementById("confirmError").innerHTML = "";
+    document.getElementById("phoneError").innerHTML = "";
+
+    let valid = true;
+
+    if (name === "") {
+        document.getElementById("nameError").innerHTML = "Name required"; 
+        valid = false; 
+    }
+    if (email === "") { 
+        document.getElementById("emailError").innerHTML = "Email required"; 
+        valid = false;
+    }
+    if (password === "") { 
+        document.getElementById("passError").innerHTML = "Password required"; 
+        valid = false;
+    }
+    if (confirm === "") { 
+        document.getElementById("confirmError").innerHTML = "Confirm required"; 
+        valid = false;
+    }
+    if (password !== "" && confirm !== "" && password !== confirm) { 
+        document.getElementById("confirmError").innerHTML = "Passwords do not match"; 
+        valid = false; 
+    }
+    if (phone.length !== 10 || isNaN(phone)) { 
+        document.getElementById("phoneError").innerHTML = "Enter valid phone"; 
+        valid = false; 
+    }
+
+    
+    if (!valid) return false;
+
+    
+    alert("Signup Successful!");
+
+    
+    document.getElementById("successBox").style.display = "block";
+    document.getElementById("successBox").innerHTML = "Signup Successful! Redirecting...";
+
+    
+    localStorage.setItem("name", name);
+    localStorage.setItem("email", email);
+    localStorage.setItem("phone", phone);
+    localStorage.setItem("password", password);
+
+    
+    setTimeout(() => {
+        window.location.href = "https://naveenkumar221.github.io/htmlcssproject/project25/project1.html#Home"; 
+    }, 2000);
+
+    return false; 
+}
+
+</script>
+
+</body>
+</html>
