@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bulb ON/OFF </title>
+
+<style>
+body {
+    font-family: Arial;
+    text-align: center;
+    height: 100vh;
+    padding-top: 40px;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: white;
+    transition: 0.4s ease;
+}
+
+.bulb-box {
+    position: relative;
+    display: inline-block;
+    width: 300px;
+    height: 450px;
+}
+
+#bulb {
+    width: 300px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 3;
+}
+
+#glow {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    top: 150px;
+    left: 60px;
+    border-radius: 50%;
+    background: radial-gradient(circle,
+        rgba(255, 240, 150, 1) 0%,     
+        rgba(255, 200, 50, 0.7) 40%,   
+        rgba(255, 170, 0, 0) 80%      
+    );
+    filter: blur(35px);
+    opacity: 0;
+    transition: 0.3s ease;
+    z-index: 1;
+}
+
+button {
+    margin: 10px;
+    padding: 12px 25px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    background: #ffc107;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.1);
+}
+
+@keyframes flicker {
+    0%   { opacity: 1; }
+    5%   { opacity: 0.85; }
+    10%  { opacity: 1; }
+    15%  { opacity: 0.9; }
+    20%  { opacity: 1; }
+    25%  { opacity: 0.8; }
+    30%  { opacity: 1; }
+    35%  { opacity: 0.92; }
+    40%  { opacity: 1; }
+    60%  { opacity: 0.88; }
+    70%  { opacity: 1; }
+    85%  { opacity: 0.9; }
+    100% { opacity: 1; }
+}
+
+.flicker {
+    animation: flicker 0.25s infinite;
+}
+</style>
+</head>
+
+<body id="body">
+
+    <h1 id="title">Bulb OFF</h1>
+
+    <div class="bulb-box">
+        <img id="bulb" src="bulboff1.png">
+        <div id="glow"></div>
+    </div>
+
+    <br>
+
+    <button id="onBtn">Turn ON</button>
+    <button id="offBtn">Turn OFF</button>
+    <button id="toggleBtn">Toggle Background</button>
+
+<script>
+let bulb = document.getElementById("bulb");
+let glow = document.getElementById("glow");
+let body = document.getElementById("body");
+let title = document.getElementById("title");
+
+let onBtn = document.getElementById("onBtn");
+let offBtn = document.getElementById("offBtn");
+let toggleBtn = document.getElementById("toggleBtn");
+
+let backgroundOn = false;
+
+
+onBtn.addEventListener("click", () => {
+    bulb.src = "bulbon1.png";
+    glow.style.opacity = 1;
+    glow.classList.add("flicker");
+    title.innerText = "Bulb ON";   
+});
+
+
+offBtn.addEventListener("click", () => {
+    bulb.src = "bulboff1.png";
+    glow.style.opacity = 0;
+    glow.classList.remove("flicker");
+    title.innerText = "Bulb OFF";  
+});
+
+
+toggleBtn.addEventListener("click", () => {
+    if (backgroundOn) {
+        body.style.background = "linear-gradient(135deg, #00F260, #0575E6)";
+        body.style.color = "white";
+        backgroundOn = false;
+    } else {
+        body.style.background = "black";
+        body.style.color = "white";
+        backgroundOn = true;
+    }
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript - Sync, Async, Callback & Callback Hell</title>
+
+    <style>
+        body {
+            background-image: repeating-radial-gradient(rgb(19, 211, 237),rgb(241, 6, 210)) ;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .topic {
+            background: #c7c2c3;
+            padding: 20px;
+            margin: 20px auto;
+            width: 55%;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #ccc;
+        }
+        pre {
+            background: #222;
+            color: #ecf71d;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+        }
+        .output {
+            background: #111;
+            color: #00e676;
+            padding: 12px;
+            border-radius: 6px;
+            height: 150px;
+            margin-top: 10px;
+            overflow-y: auto;
+            font-family: monospace;
+        }
+        button {
+            margin-top: 10px;
+            padding: 10px 15px;
+            background: #1061b7;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>JavaScript: Synchronous, Asynchronous, Callback & Callback Hell</h1>
+
+
+<!-- 1. SYNCHRONOUS -->
+
+<div class="topic">
+    <h2>1 Synchronous JavaScript</h2>
+    <p>JavaScript executes code line by line, blocking the next line until the current one finishes.</p>
+
+    <pre>
+// Synchronous
+console.log("Step 1");
+console.log("Step 2");
+console.log("Step 3");
+    </pre>
+
+    <button onclick="runSync()">Run Synchronous</button>
+    <div id="sync_output" class="output"></div>
+</div>
+
+
+
+<!-- 2. ASYNCHRONOUS -->
+<div class="topic">
+    <h2>2 Asynchronous JavaScript (setTimeout)</h2>
+    <p>Asynchronous code runs without blocking other code (background task).</p>
+
+    <pre>
+// Asynchronous
+console.log("Step 1");
+setTimeout(() => {
+    console.log("Step 2 (after 2 seconds)");
+}, 2000);
+console.log("Step 3");
+    </pre>
+
+    <button onclick="runAsync()">Run Asynchronous</button>
+    <div id="async_output" class="output"></div>
+</div>
+
+
+
+<!-- Callback() -->
+<div class="topic">
+    <h2>3 Callback Function</h2>
+    <p>A callback is a function passed as an argument to another function.</p>
+
+    <pre>
+function homeWork(subject, done){
+    setTimeout(() => {
+        console.log(subject + " homework completed");
+        done();
+    }, 2000);
+}
+
+function finished(){
+    console.log("All homework done!");
+}
+
+homeWork("Maths", finished);
+    </pre>
+
+    <button onclick="runCallback()">Run Callback</button>
+    <div id="callback_output" class="output"></div>
+</div>
+
+
+<!-- Callback Hell() -->
+
+<div class="topic">
+    <h2>4 Callback Hell (Pyramid of Doom)</h2>
+    <p>Too many nested callbacks create a triangular “pyramid” shape.</p>
+
+    <pre>
+setTimeout(()=>{
+    console.log("Step 1");
+    setTimeout(()=>{
+        console.log("Step 2");
+        setTimeout(()=>{
+            console.log("Step 3");
+        }, 2000);
+    }, 2000);
+}, 2000);
+    </pre>
+
+    <button onclick="runHell()">Run Callback Hell</button>
+    <div id="hell_output" class="output"></div>
+</div>
+
+
+
+
+
+<div class="topic">
+    <h2>5 Car Journey - Callback Hell Example</h2>
+
+    <pre>
+find_car_key(() => {
+    car_key_insert(() => {
+        start_engine(() => {
+            Accelerator_pressed(() => {
+                reach_end_point();
+            });
+        });
+    });
+});
+    </pre>
+
+    <button onclick="runCar()">Start Car Journey</button>
+    <div id="car_output" class="output"></div>
+</div>
+
+
+
+<script>
+function print(id, msg) {
+    document.getElementById(id).innerHTML += msg + "<br>";
+}
+
+
+function runSync() {
+    let out = document.getElementById("sync_output");
+    out.innerHTML = "";
+
+    print("sync_output", "Step 1");
+    print("sync_output", "Step 2");
+    print("sync_output", "Step 3");
+}
+
+
+function runAsync() {
+    let out = document.getElementById("async_output");
+    out.innerHTML = "";
+
+    print("async_output", "Step 1");
+
+    setTimeout(() => {
+        print("async_output", "Step 2 (after 2 seconds)");
+    }, 2000);
+
+    print("async_output", "Step 3");
+}
+
+
+
+function runCallback() {
+    let out = document.getElementById("callback_output");
+    out.innerHTML = "";
+
+    function homework(subject, done) {
+        setTimeout(() => {
+            print("callback_output", subject + " homework completed");
+            done();
+        }, 2000);
+    }
+
+    function finished() {
+        print("callback_output", "All homework done!");
+    }
+
+    homework("Maths", finished);
+}
+
+
+
+function runHell() {
+    let out = document.getElementById("hell_output");
+    out.innerHTML = "";
+
+    setTimeout(() => {
+        print("hell_output", "Step 1");
+        setTimeout(() => {
+            print("hell_output", "Step 2");
+            setTimeout(() => {
+                print("hell_output", "Step 3");
+            }, 2000);
+        }, 2000);
+    }, 2000);
+}
+
+
+
+function runCar() {
+    let out = document.getElementById("car_output");
+    out.innerHTML = "";
+
+    function find_car_key(cb) {
+        setTimeout(() => {
+            print("car_output", "🔑 Found the car key!");
+            cb();
+        }, 2000);
+    }
+
+    function car_key_insert(cb) {
+        setTimeout(() => {
+            print("car_output", "🚘 Inserted the car key");
+            cb();
+        }, 1500);
+    }
+
+    function start_engine(cb) {
+        setTimeout(() => {
+            print("car_output", "⚙️ Engine Started");
+            cb();
+        }, 1500);
+    }
+
+    function Accelerator_pressed(cb) {
+        setTimeout(() => {
+            print("car_output", "🏎️ Car Moving...");
+            cb();
+        }, 1500);
+    }
+
+    function reach_end_point() {
+        setTimeout(() => {
+            print("car_output", "🎉 Reached Destination!");
+        }, 2000);
+    }
+
+    
+    find_car_key(() => {
+        car_key_insert(() => {
+            start_engine(() => {
+                Accelerator_pressed(() => {
+                    reach_end_point();
+                });
+            });
+        });
+    });
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task-complete </title>
+</head>
+<body>
+
+    <h1>Food Order Simulation</h1>
+
+    
+    <pre id="output" style="background:#eee; padding:20px; font-size:18px"></pre>
+
+
+    <script>
+
+        let out=document.getElementById("output");
+
+        function log(Food){
+            out.innerHTML += Food + "\n";
+        }
+
+        //CALLBACK HELL 
+        function selectFood(callback){
+            setTimeout(()=>{ 
+                log("Food selected 🍽️"); 
+                callback(); 
+            },2000);
+        }
+        function prepareFood(callback){
+            setTimeout(()=>{ 
+                log("Food Prepared 👨‍🍳"); 
+                callback(); 
+            },2000);
+        }
+        function packFood(callback){
+            setTimeout(()=>{ 
+                log("Food pack 📦"); 
+                callback(); 
+            },2000);
+        }
+        function deliverFood(callback){
+            setTimeout(()=>{ 
+                log("Food delivered 🚚"); 
+                callback(); 
+            },2000);
+        }
+
+        log("CALLBACK HELL");
+
+        selectFood(()=>{
+            prepareFood(()=>{
+                packFood(()=>{
+                    deliverFood(()=>{
+                        log("Order completed by call back hell");
+
+
+                        //PROMISES 
+                        function selectFoodP(){
+                            return new Promise(res=>{
+                                setTimeout(()=>{ 
+                                    log("Food selected 🍽️"); 
+                                    res(); 
+                                },2000);
+                            });
+                        }
+
+                        function prepareFoodP(){
+                            return new Promise(res=>{
+                                setTimeout(()=>{ 
+                                    log("Food prepared 👨‍🍳"); 
+                                    res(); 
+                                },2000);
+                            });
+                        }
+
+                        function packFoodP(){
+                            return new Promise(res=>{
+                                setTimeout(()=>{ 
+                                    log("Food packed 📦"); 
+                                    res(); 
+                                },2000);
+                            });
+                        }
+
+                        function deliverFoodP(){
+                            return new Promise(res=>{
+                                setTimeout(()=>{ 
+                                    log("Food delivered 🚚"); 
+                                    res(); 
+                                },2000);
+                            });
+                        }
+
+                        log("\nPROMISES");
+                        selectFoodP()
+                        .then(prepareFoodP)
+                        .then(packFoodP)
+                        .then(deliverFoodP)
+                        .then(() => {
+                            log("Order completed by promises");
+
+
+
+                            //ASYNC AWAIT 
+
+                            async function processOrder(){
+                                log("\nASYNC / AWAIT");
+                                await selectFoodP();
+                                await prepareFoodP();
+                                await packFoodP();
+                                await deliverFoodP();
+                                log("Order Completed Async/Await");
+                            }
+
+                            processOrder();
+                        });
+
+                    })
+                })
+            })
+        });
+
+    </script>
+    
+</body>
+</html>

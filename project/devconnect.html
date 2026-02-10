@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DevConnect — Full One Page App</title>
+
+<style>
+
+
+body {
+  margin:0;
+  font-family: "Poppins", sans-serif;
+  background:#000;
+  color:white;
+}
+
+.page { display:none; }
+.active { display:block; }
+
+
+.bg {
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1500&q=80')
+            center/cover no-repeat;
+}
+
+.glass {
+  background:rgba(0,0,0,0.55);
+  backdrop-filter:blur(5px);
+  padding:40px;
+  border-radius:20px;
+  width:420px;
+}
+
+
+.btn {
+  width:100%; height:52px;
+  border-radius:14px;
+  border:0;
+  cursor:pointer;
+  margin-top:12px;
+  font-size:16px;
+  font-weight:600;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+}
+
+.btn-white { background:white; color:black; }
+.btn-dark  { background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); color:white; }
+
+
+.input {
+  width:100%;
+  padding:12px;
+  margin-top:12px;
+  border-radius:14px;
+  background:white;
+  border:1px solid rgba(255,255,255,0.3);
+  color:rgb(0, 0, 0);
+}
+
+
+.card {
+  max-width:450px;
+  margin:40px auto;
+  padding:30px;
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(7px);
+  border-radius:20px;
+}
+
+.post {
+  background:rgba(255,255,255,0.15);
+  padding:12px;
+  border-radius:12px;
+  margin-top:10px;
+}
+
+.action-btn {
+  background:transparent;
+  border:0;
+  color:#ddd;
+  cursor:pointer;
+  margin-right:10px;
+}
+
+.notif {
+  background:rgba(255,255,255,0.15);
+  padding:8px;
+  border-radius:8px;
+  margin:6px 0;
+}
+
+
+.tags { display:flex; flex-wrap:wrap; gap:10px; margin-top:10px; }
+.tag {
+  padding:8px 14px;
+  border-radius:20px;
+  background:rgba(255,255,255,0.2);
+  cursor:pointer;
+  font-size:13px;
+}
+.tag.selected { background:#ff4fe3; color:black; }
+
+
+.avatar {
+  width:110px; height:110px;
+  background:#2ecc71;
+  border-radius:50%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:48px; font-weight:700;
+  margin:0 auto 20px auto;
+}
+</style>
+</head>
+<body>
+
+<!-- landing page -->
+
+<div id="landing" class="page active">
+  <div class="bg">
+    <div class="glass">
+
+    <!-- <img src="https://i.imgur.com/jTZCuiu.png" width="130"> -->
+
+
+
+      <h1 style="color:#ff4fe3; font-size:32px; font-weight:700; margin-bottom:15px;">
+        Where developers suffer together
+      </h1>
+
+      <p style="color:#ddd; margin-bottom:20px; line-height:1.5;">
+        We know how hard it is to be a developer. Personalized news feed, dev community and search. Much better than what's out there.
+      </p>
+
+      <button class="btn btn-white" onclick="goto('emailSignup')">
+        <img src="https://developers.google.com/identity/images/g-logo.png" width="20">
+        Continue with Google
+      </button>
+
+      <button class="btn btn-white" onclick="goto('emailSignup')">
+        <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="20">
+        Continue with GitHub
+      </button>
+
+      <div style="text-align:center; margin:18px 0; color:#bbb;">OR</div>
+
+      <button class="btn btn-dark" onclick="goto('emailSignup')">Continue with email</button>
+
+      <div style="margin-top:25px; text-align:center; color:#ccc;">
+        Already have an account?
+        <span onclick="goto('login')" style="color:#7ee0ff; cursor:pointer;">Log in</span>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- sigin/ form  -->
+<div id="emailSignup" class="page">
+  <div class="bg">
+    <div class="glass">
+
+      <img src="https://daily.dev/logo.png" width="130" style="margin-bottom:20px;">
+
+      <h2 style="text-align:center;">Sign up</h2>
+
+      <div id="avatar" class="avatar">U</div>
+
+      <input class="input" id="su_email" placeholder="Email">
+      <input class="input" id="su_name" placeholder="Name">
+      <input class="input" id="su_user" placeholder="Username">
+
+      <select class="input" id="su_exp">
+        <option value="">Experience level</option>
+        <option>Beginner</option>
+        <option>Intermediate</option>
+        <option>Advanced</option>
+      </select>
+
+      <label style="display:flex; gap:10px; margin-top:10px;">
+        <input type="checkbox" id="su_optout">
+        I don't want to receive updates
+      </label>
+
+      <button class="btn btn-white" onclick="finishSignup()">Sign Up</button>
+
+      <div style="margin-top:20px; text-align:center;">
+        <span onclick="goto('landing')" style="color:#7ee0ff; cursor:pointer;">Back</span>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Login page  -->
+
+<div id="login" class="page">
+  <div class="bg">
+    <div class="glass">
+
+      <h2>Log In</h2>
+
+      <input class="input" id="li_email" placeholder="Email">
+      <input class="input" id="li_pass" placeholder="Password" type="password">
+
+      <button class="btn btn-white" onclick="loginUser()">Log In</button>
+      <button class="btn btn-dark" onclick="goto('landing')">Back</button>
+
+    </div>
+  </div>
+</div>
+
+<!-- dashboard page  -->
+
+<div id="dashboard" class="page">
+  <div class="card">
+    <h2>Dashboard</h2>
+    <p id="dash_user"></p>
+
+    <button class="btn btn-white" onclick="goto('feed')">Developer Feed</button>
+    <button class="btn btn-white" onclick="goto('profile')">Profile Customization</button>
+    <button class="btn btn-dark" onclick="showRecent()">Recent Activity</button>
+    <button class="btn btn-dark" onclick="logout()">Log Out</button>
+
+    <h3 style="margin-top:20px;">Notifications</h3>
+    <div id="dash_notifs"></div>
+  </div>
+</div>
+
+<!-- developer feed  -->
+
+<div id="feed" class="page">
+  <div class="card">
+    <h2>Developer Feed</h2>
+
+    <textarea id="postText" class="input" placeholder="Write something..."></textarea>
+
+    <button class="btn btn-white" onclick="createPost()">Create Post</button>
+    <button class="btn btn-dark" onclick="goto('dashboard')">Back</button>
+
+    <h3 style="margin-top:20px;">Posts</h3>
+    <div id="posts"></div>
+
+    <h3 style="margin-top:20px;">Notifications</h3>
+    <div id="feed_notifs"></div>
+  </div>
+</div>
+
+<!-- profile  -->
+<div id="profile" class="page">
+  <div class="card">
+    <h2>Profile</h2>
+
+    <input class="input" id="pr_name" placeholder="Update name">
+    <input class="input" id="pr_bio" placeholder="Bio">
+
+    <h3>Skill Tags</h3>
+    <div class="tags" id="skillTags">
+      <div class="tag">HTML</div>
+      <div class="tag">CSS</div>
+      <div class="tag">JavaScript</div>
+      <div class="tag">Python</div>
+      <div class="tag">React</div>
+      <div class="tag">Node</div>
+      <div class="tag">Django</div>
+    </div>
+
+    <button class="btn btn-white" onclick="saveProfile()">Save</button>
+    <button class="btn btn-dark" onclick="goto('dashboard')">Back</button>
+  </div>
+</div>
+
+
+<script>
+let users = JSON.parse(localStorage.getItem("users") || "[]");
+let current = JSON.parse(localStorage.getItem("current") || "null");
+let posts = JSON.parse(localStorage.getItem("posts") || "[]");
+let notifs = JSON.parse(localStorage.getItem("notifs") || "[]");
+let recents = JSON.parse(localStorage.getItem("recents") || "[]");
+
+function saveAll() {
+  localStorage.setItem("users", JSON.stringify(users));
+  localStorage.setItem("current", JSON.stringify(current));
+  localStorage.setItem("posts", JSON.stringify(posts));
+  localStorage.setItem("notifs", JSON.stringify(notifs));
+  localStorage.setItem("recents", JSON.stringify(recents));
+}
+
+function goto(pg) {
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById(pg).classList.add('active');
+
+  if(pg==="dashboard") loadDashboard();
+  if(pg==="feed"){ renderPosts(); loadNotifs(); }
+  if(pg==="profile") loadProfile();
+}
+
+/* SIGNUP (EMAIL) */
+function finishSignup() {
+  let email = su_email.value;
+  let name  = su_name.value;
+  let user  = su_user.value;
+  let exp   = su_exp.value;
+
+  if(!email || !name || !user || !exp) return alert("Fill all fields!");
+
+  current = { email, name, username:user, exp, bio:"", skills:[] };
+  users.push(current);
+
+  pushNotif(name+" created an account");
+  saveAll();
+
+  goto("dashboard");
+}
+
+/* LOGIN */
+function loginUser(){
+  let email = li_email.value;
+  let pass = li_pass.value;
+
+  let found = users.find(u=>u.email===email);
+  if(!found) return alert("User not found");
+
+  current = found;
+  pushNotif(found.name+" logged in");
+  saveAll();
+  goto("dashboard");
+}
+
+/* DASHBOARD */
+function loadDashboard() {
+  dash_user.innerHTML = `
+    <b>${current.name}</b><br>
+    Username: ${current.username}<br>
+    Experience: ${current.exp}<br>
+    Bio: ${current.bio}<br>
+    Skills: ${current.skills.join(", ")}
+  `;
+
+  dash_notifs.innerHTML = notifs.slice(0,5)
+    .map(n=>`<div class='notif'>${n}</div>`).join("");
+}
+
+/* FEED */
+function createPost(){
+  let text = postText.value.trim();
+  if(!text) return;
+
+  posts.unshift({
+    author:current.name,
+    text,
+    time:new Date().toLocaleString(),
+    likes:0,
+    comments:[]
+  });
+
+  pushNotif(current.name+" created a post");
+  saveAll();
+
+  postText.value="";
+  renderPosts();
+}
+
+function renderPosts(){
+  postsEl = document.getElementById("posts");
+  postsEl.innerHTML = posts.map((p,i)=>`
+    <div class='post'>
+      <b>${p.author}</b> - ${p.time}
+      <p>${p.text}</p>
+
+      <button class='action-btn' onclick='likePost(${i})'>👍 ${p.likes}</button>
+      <button class='action-btn' onclick='commentPost(${i})'>💬 ${p.comments.length}</button>
+
+      ${p.author===current.name ?
+        `<button class='action-btn' onclick='deletePost(${i})'>🗑 Delete</button>`:""}
+
+      <div style='margin-top:8px; font-size:14px;'>${p.comments.join(", ")}</div>
+    </div>
+  `).join("");
+}
+
+function likePost(i){
+  posts[i].likes++;
+  pushNotif(current.name+" liked a post");
+  saveAll();
+  renderPosts();
+}
+
+function commentPost(i){
+  let c = prompt("Comment:");
+  if(!c) return;
+  posts[i].comments.push(c);
+  pushNotif(current.name+" commented");
+  saveAll();
+  renderPosts();
+}
+
+function deletePost(i){
+  pushNotif(current.name+" deleted a post");
+  posts.splice(i,1);
+  saveAll();
+  renderPosts();
+}
+
+function loadNotifs(){
+  feed_notifs.innerHTML = notifs.map(n=>`<div class='notif'>${n}</div>`).join("");
+}
+
+/* PROFILE */
+function loadProfile(){
+  pr_name.value = current.name;
+  pr_bio.value = current.bio;
+
+  document.querySelectorAll(".tag").forEach(tag=>{
+    tag.classList.toggle("selected", current.skills.includes(tag.innerText));
+    tag.onclick = ()=>tag.classList.toggle("selected");
+  });
+}
+
+function saveProfile(){
+  current.name   = pr_name.value;
+  current.bio    = pr_bio.value;
+  current.skills = [...document.querySelectorAll(".tag.selected")].map(t=>t.innerText);
+
+  pushNotif(current.name+" updated profile");
+
+  let idx = users.findIndex(u=>u.email===current.email);
+  users[idx] = current;
+
+  saveAll();
+  goto("dashboard");
+}
+
+/* RECENT */
+function showRecent(){
+  alert(recents.slice(0,10).join("\n") || "No activity");
+}
+
+/* NOTIFICATIONS */
+function pushNotif(msg){
+  notifs.unshift(msg);
+  recents.unshift(msg+" - "+new Date().toLocaleTimeString());
+  saveAll();
+}
+
+/* LOGOUT */
+function logout(){
+  current = null;
+  saveAll();
+  goto("landing");
+}
+</script>
+
+</body>
+</html>

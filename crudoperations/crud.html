@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Operations</title>
+</head>
+<body>
+
+    <form>
+        <input type="text" id="name" placeholder="Enter your name">
+        <input type="email" id="email" placeholder="Enter your email">
+        <button type="button" onclick="create_data()">Create</button>
+    </form>
+
+    <table cellpadding="10" border="1" style="border: 1px solid; margin: 10px;">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th colspan="2">Actions</th>
+            </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+    </table>
+
+    <script>
+        let data = [];
+        let editIndex = -1;
+
+        function create_data() {
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+
+            if (editIndex === -1) {
+                data.push({ name, email });
+            } else {
+                data[editIndex].name = name;
+                data[editIndex].email = email;
+                editIndex = -1;
+            }
+
+            document.getElementById("name").value = "";
+            document.getElementById("email").value = "";
+
+            display_data();
+        }
+
+        function display_data() {
+            let table = "";
+            data.forEach((item, index) => {
+                table += `
+                <tr>
+                    <td>${item.name}</td>
+                    <td>${item.email}</td>
+                    <td><button onclick="edit_Button(${index})">Edit</button></td>
+                    <td><button onclick="delete_Button(${index})">Delete</button></td>
+                </tr>`;
+            });
+            document.getElementById("tbody").innerHTML = table;
+        }
+
+        function delete_Button(i) {
+            data.splice(i, 1);
+            display_data();
+        }
+
+        function edit_Button(i) {
+            document.getElementById("name").value = data[i].name;
+            document.getElementById("email").value = data[i].email;
+            editIndex = i;
+        }
+    </script>
+
+</body>
+</html>

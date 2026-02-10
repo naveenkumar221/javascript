@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API 2 with own host</title>
+</head>
+<body>
+
+    <script>
+// //using the get 
+//         fetch('http://localhost:3000/students')
+//         .then(res=>res.json())
+//         .then(data=>console.log(data))
+//         .catch(err=>console.log(err))
+
+
+// //POST
+
+// fetch('http://localhost:3000/students',{
+//     method:"POST",
+//     headers:{
+//         "Content-Type":"Application/json"
+//     },
+//     body:JSON.stringify({
+//         "id":"3",
+//         "name":"Teja",
+//         "email":"tejau@gmail.com",
+//         "age":"23",
+//         "height":"6ft"
+//     })
+// })
+
+// .then(res=>res.json())
+// .then(data=>console.log(data))
+// .catch(err=>console.log(err))
+
+
+// //put method
+// fetch('http://localhost:3000/students/2',{
+//     method:"PUT",
+//     headers:{
+//         "Content-TYpe":"Application/json"
+//     },
+
+//     body:JSON.stringify({
+//         "id":"4",
+//         "name":"sai",
+//         "email":"saik@gmail.com",
+//         "age":"23",
+//         "height":"10ft",
+
+
+//     })
+// })
+
+// .then(res=>res.json())
+// .then(data=>console.log(data))
+// .catch(err=>console.log(err))
+
+
+//PATCH
+
+
+
+//DELETE
+
+fetch('http://localhost:3000/students/3',{
+    method:"DELETE"
+
+})
+
+.then(()=>console.log("Delete"))
+.catch(err=>console.log(err))
+
+    </script>
+    
+</body>
+</html>

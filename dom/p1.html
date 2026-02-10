@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- queryselector() -->
+    <h1>good morning</h1>
+    <h1>good afternoon</h1>
+    <h1 id="title">good evening</h1>
+    <h1>good night</h1>
+
+    <p >naveen kumar</p>
+    <p > vizag</p>
+    <p >hyderbadh</p>
+
+    <button onclick="func_1()"> click me </button>
+
+
+    <!-- queryselectorall() -->
+
+    <h2 class="box">naveen kumar</h2>
+    <h2 class="box"> vizag</h2>
+    <h2 class="box">hyderbadh</h2>
+    <button onclick="func_2()"> click me here</button>
+
+    <!-- setattributes -->
+<h3 id="myPara">This is a paragraph</h3>
+<button onclick="updatePara()">click to update para</button>
+
+    <script>
+
+     //t1
+       const first= document.querySelector("h1");
+       if(first){
+        first.textContent =" welcome to Js Dom";
+
+       }
+       else{
+        console.log("no <h1> element is not present")
+       }
+
+
+    //t2
+    const first1=document.querySelector("h1").style.color="red"
+
+
+    //t3
+
+    let first2 = document.querySelector("#title");
+    first2.style.fontSize="100px"
+
+
+    //t4
+   
+    function func_1(){
+         const first3 =document.querySelectorAll("p")
+         first3.forEach((ele) =>{
+            ele.style.color="green"
+         }
+         )
+    }
+
+
+    //t5
+    function func_2(){
+        const first4 = document.querySelectorAll(".box")
+        first4.forEach((elem) => {
+            elem.style.border="2px solid black"
+            elem.style.padding = "5px";
+            elem.style.margin = "5px";
+        }
+        
+    )
+    // console.log(first4)
+    }
+
+    //t6
+
+    function updatePara() {
+    const para = document.getElementById("myPara");
+    para.setAttribute("class", "highlight");
+    para.setAttribute("title", "Hover text added");
+    para.setAttribute("style", "color: blue; font-weight: bold;");
+}
+    
+    
+
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch API</title>
+</head>
+<body>
+
+    <script>
+// // using the get 
+//         fetch('https://jsonplaceholder.typicode.com/users')
+//         .then(res=>res.json())
+//         .then(data=>console.log(data))
+//         .catch(err=>cosole.log("Error: ",err))
+
+
+
+
+// // using the Post method
+
+// fetch('https://jsonplaceholder.typicode.com/users',{
+//     method:"POST",
+//     headers:{
+//         "Content-type" : "Application/json"
+//     },
+//     body:JSON.stringify({
+
+//         name:"Naveen",
+//         email:"naveennaughty160@gmail.com",
+//         phone:"9704570356",
+
+//     })
+// })
+// .then(res=>res.json())
+// .then(data=>console.log(data))
+// .catch(err=>console.log("Error occur during the fetching",err))
+
+
+// //put : to modify or update the complete user data
+// fetch('https://jsonplaceholder.typicode.com/users/1', {
+//     method: "PUT",
+//     headers: {
+//         "Content-Type": "Application/json"
+//     },
+//     body: JSON.stringify({
+//         name: "Johny",
+//         email: "johny@gmail.com",
+//         username: "Johny johny_789",
+//         phone: "947598347395"
+//     })
+// })
+// .then(res => res.json())
+// .then(data => console.log(data))
+// .catch(err => console.log("Error at fetching", err));
+
+
+// // PATCH
+
+// fetch('https://jsonplaceholder.typicode.com/users/1',{
+//     method:"PATCH",
+//     headers:{
+//         "Content-Type": "Application/json"
+//     },
+//     body:JSON.stringify({
+//         name:"Buntty"
+
+//     })
+// })
+// .then(res=>res.json())
+// .then(data=>console.log(data))
+// .catch(err=> console.log(err))
+
+
+//delete
+
+fetch('https://jsonplaceholder.typicode.com/users/1',{
+    method:"DELETE"
+})
+
+.then(()=>console.log("delete"))
+.catch(err=>console.log(err))
+
+
+
+
+    </script>
+    
+</body>
+</html>

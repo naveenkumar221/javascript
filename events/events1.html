@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Events in js</title>
+  <style>
+    body {
+      font-family: 'Times New Roman', Times, serif;
+      margin: 0;
+      height: 100vh;
+      background-image: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+      overflow: hidden;
+    }
+
+    
+    .container {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 200px;
+      height: 200px;
+      background-color: black;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    }
+
+    button {
+      margin-top: 10px;
+      padding: 8px 15px;
+      background-color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: yellow;
+      color: black;
+    }
+
+    .container1{
+      position: absolute;
+      top: 20px;
+      left: 300px;
+      width: 200px;
+      height: 200px;
+      background-color: black;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius: 10px;
+    }
+
+    .container2{
+      position: absolute;
+      top: 20px;
+      left: 600px;
+      width: 200px;
+      height: 200px;
+      background-color: black;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius: 10px;
+    }
+
+    #no{
+      position: absolute;
+      top: 300px;
+      left: 50px;
+      width: 300px;
+      height: 50px;
+      background-color: black;
+      color: white;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius: 10px;
+
+    }
+
+    #username{
+      position: absolute;
+      top: 300px;
+      left: 400px;
+      width: 300px;
+      height: 50px;
+      background-color: black;
+      color: white;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius: 10px;
+    }
+
+    #on{
+      position: absolute;
+      top: 360px;
+      left: 400px;
+      width: 100px;
+      height: 30px;
+      background-color: rgb(220, 6, 6);
+      color: white;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius: 10px;
+     
+    }
+
+    #output{
+      position: absolute;
+      top: 400px;
+      left: 400px;
+      width: 100px;
+      height: 30px;
+      color: black;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius: 10px;
+    }
+
+    #language{
+      position: absolute;
+      top: 400px;
+      left: 50px;
+      width: 300px;
+      height: 50px;
+      font-size: x-large;
+      /* background-color:; */
+      /* color: white; */
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius: 10px;
+
+    }
+h1{
+      position: absolute;
+      top: 600px;
+      left: 50px;
+      width: 300px;
+      height: 50px;
+      
+
+}
+  </style>
+
+</head>
+
+<body onload="onload()">
+
+
+
+  <div class="container">
+    <p>Onclick</p>
+    <button onclick="changeColor()">Click Me</button>
+  </div>
+
+
+
+  <div class="container1">
+    <p>onmouseover</p>
+    <button onmouseover="changeColor2()">Click Me</button>
+  </div>
+
+
+   <div class="container2"
+       onmouseover="changeToRed()"
+       onmouseout="changeToGray()">
+    Hover Over Me
+  </div>
+
+
+
+<select id="language" onchange="showSelection()">
+  <option value="">-- Select a Language --</option>
+  <option value="HTML">HTML</option>
+  <option value="CSS">CSS</option>
+  <option value="JavaScript">JavaScript</option>
+</select>
+
+
+
+
+<form>
+  <input id="no" type="text" onfocus="changebg()"
+  placeholder="onfocus ">
+</form>
+
+
+
+<form onsubmit="return validateForm()">
+   <input  type="text" id="username" placeholder="onsubmit">
+   <input id="on" type="submit" value="Submit">
+ </form>
+<div id="output"></div>
+
+
+
+<h1>Events in JavaScript</h1>
+ 
+ 
+
+  <script>
+
+    //t1 : 
+    function changeColor() {
+      var a =document.querySelector('.container')
+      a.style.backgroundColor = 'blue';
+      alert('Button Clicked Successfully!')
+    }
+
+
+    //t2
+    function changeColor2() {
+      var a = document.querySelector('.container1');
+      a.style.backgroundColor = 'green';
+      
+    }
+
+
+    //t3
+    function changeToRed() {
+      var box = document.querySelector('.container2');
+      box.style.backgroundColor = 'red';
+      box.textContent = 'Mouse Over!';
+    }
+    function changeToGray() {
+      var box = document.querySelector('.container2');
+      box.style.backgroundColor = 'gray';
+      box.textContent = 'Mouse Out!';
+    }
+
+
+    //t4
+    function changebg(){
+      var b = document.querySelector('input')
+      b.style.backgroundColor="yellow"
+    }
+
+
+    //t5
+  function validateForm() {
+ 	let name = document.getElementById("username").value;
+ 	if (name == "") {
+     	alert("Name cannot be empty!");
+     	return false;
+ 	}
+ 	document.getElementById("output").innerHTML = "Your name is: " + name;
+  return false;
+ }
+
+
+ //t6
+function onload() {
+ 	alert(`Welcome! Page Loaded Successfully.
+  click on ok `
+  );
+ }
+
+
+ //t7 
+ function showSelection() {
+  let dropdown = document.getElementById("language");
+  let selectedValue = dropdown.value;
+
+  if (selectedValue) {
+    alert("You selected: " + selectedValue);
+  }
+}
+
+
+  </script>
+</body>
+</html>

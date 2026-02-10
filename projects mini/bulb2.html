@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pull String Bulb</title>
+    <style>
+    body {
+    margin: 0;
+    background: #111;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 40px;
+}
+
+.room {
+    position: relative;
+    text-align: center;
+}
+
+.bulb {
+    width: 280px;
+    transition: 0.3s ease;
+}
+
+.string {
+    width: 4px;
+    height: 180px;
+    background: #ddd;
+    margin: 0 auto;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.handle {
+    width: 20px;
+    height: 20px;
+    background: #eee;
+    border-radius: 50%;
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Pull animation */
+.pulled {
+    transform: translateY(40px);
+}
+
+    </style>
+</head>
+<body>
+
+    <div class="room">
+        <img id="bulb" src="bulboff1.png" class="bulb">
+
+        <div id="string" class="string">
+            <div class="handle"></div>
+        </div>
+    </div>
+
+<script>
+        let bulb = document.getElementById("bulb");
+let string = document.getElementById("string");
+
+let isOn = false;
+
+string.addEventListener("click", () => {
+
+    // Pull animation
+    string.classList.add("pulled");
+
+    setTimeout(() => {
+        string.classList.remove("pulled");
+    }, 200);
+
+    // Toggle bulb ON/OFF
+    if (!isOn) {
+        bulb.src = "bulbon1.png";
+        isOn = true;
+    } else {
+        bulb.src = "bulboff1.png";
+        isOn = false;
+    }
+});
+
+    </script>
+
+</body>
+</html>

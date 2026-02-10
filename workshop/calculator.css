@@ -1,0 +1,70 @@
+body{
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(45deg, red, yellow, green);
+    background-size: 400% 400%;
+    animation: moveGradient 10s ease-in-out infinite,
+               rainbowPulse 8s ease-in-out infinite;
+}
+
+@keyframes moveGradient {
+    0%{ background-position: 0% 50%; }
+    50%{ background-position: 100% 50%; }
+    100%{ background-position: 0% 50%; }
+}
+
+@keyframes rainbowPulse {
+    0%{ filter: hue-rotate(0deg) saturate(2); }
+    20%{ filter: hue-rotate(70deg) saturate(3); }
+    40%{ filter: hue-rotate(140deg) saturate(2); }
+    60%{ filter: hue-rotate(210deg) saturate(3); }
+    80%{ filter: hue-rotate(290deg) saturate(2); }
+    100%{ filter: hue-rotate(360deg) saturate(2); }
+}
+
+
+
+
+
+.container{
+  width: 400px;
+  height: 400px;
+  border: 1px solid white;
+  border-radius: 10px;
+  padding: 10px;
+  margin: auto;
+  background-image: repeating-conic-gradient(red );
+}
+
+.display{
+  width: 300px;
+  height: 50px;
+  border-radius: 10px;
+  background-color: white;
+  color: black;
+  border: 1px solid ;
+}
+
+button{
+      width: 80px;
+      height: 60px;
+      background-color:rgb(34, 190, 213);
+      border: 1px solid black;
+      border-radius: 10px;
+      color: black;
+}
+
+.btn{
+  background-color: burlywood;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.btn1{
+  background-color: orange;
+  color: black;
+}
+
+.btn,button:hover{
+  cursor: pointer;
+}
